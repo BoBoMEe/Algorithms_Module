@@ -16,7 +16,7 @@
 
 package com.java.bobomee.algorithms_module.sort.heap;
 
-import static com.bobomee.android.data_structures_algorithms.Utils.swap;
+import static com.java.bobomee.algorithms_module.Utils.swap;
 
 /**
  * @author 汪波

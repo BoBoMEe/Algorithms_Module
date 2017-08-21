@@ -20,3 +20,14 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.gradle/
+.idea/
+Algorithms_Module.iml
+app/libs/
+app/src/main/res/drawable/
+build/android-profile/profile-2017-08-21-10-04-14-869.rawproto
+build/android-profile/profile-2017-08-21-10-04-18-317.rawproto
+build/android-profile/profile-2017-08-21-10-07-05-925.rawproto
+build/android-profile/profile-2017-08-21-10-07-26-659.rawproto
+build/generated/
+build/intermediates/

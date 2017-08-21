@@ -16,7 +16,7 @@
 
 package com.java.bobomee.algorithms_module.sort.bubble;
 
-import com.bobomee.android.data_structures_algorithms.Utils;
+import com.java.bobomee.algorithms_module.Utils;
 
 /**
  * 冒泡排序时间复杂度O(n2)
