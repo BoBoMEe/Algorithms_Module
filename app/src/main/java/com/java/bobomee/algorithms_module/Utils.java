@@ -16,6 +16,9 @@
 
 package com.java.bobomee.algorithms_module;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * Project ID：400YF17050
  * Resume:     <br/>
@@ -26,19 +29,35 @@ package com.java.bobomee.algorithms_module;
  * @since 2017/3/10.汪波.
  */
 public class Utils {
+  public static <T extends Comparable<T>> void swap(T[] arr, int one, int two) {
+    T temp = arr[one];
+    arr[one] = arr[two];
+    arr[two] = temp;
+  }
+
   public static void swap(int[] arr, int one, int two) {
     int temp = arr[one];
     arr[one] = arr[two];
     arr[two] = temp;
   }
 
-  public static int getMax(int [] arr){
-    int max = arr[0];
-    for (int i = 0; i < arr.length; i++) {
-      if(arr[i] > max){
-        max = arr[i];
+  public static <T extends Comparable<T>> T getMax(T[] arr) {
+    T max = arr[0];
+    for (T anArr : arr) {
+      if (anArr.compareTo(max) > 0) {
+        max = anArr;
       }
     }
     return max;
+  }
+
+  public static <T> void print(T[] array) {
+    String s = Arrays.toString(array);
+    System.out.println(s);
+  }
+
+  public static void print(int[] array) {
+    String s = Arrays.toString(array);
+    System.out.println(s);
   }
 }

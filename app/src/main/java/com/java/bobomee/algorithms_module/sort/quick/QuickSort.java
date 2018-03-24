@@ -16,6 +16,8 @@
 
 package com.java.bobomee.algorithms_module.sort.quick;
 
+import com.java.bobomee.algorithms_module.Utils;
+
 /**
  * Resume:     快速排序实现（分治策略）
  *
@@ -89,5 +91,16 @@ public class QuickSort {
     arr[high] = temp;
     // 返回arr[high]=key所在的新位置
     return i + 1;
+  }
+
+  public static void main(String[] args) {
+    int a[] = { 20, 50, 20, 40, 70, 10, 80, 30, 60 };
+    System.out.println("before sort:");
+    Utils.print(a);
+
+    quickSort(a, 0, a.length - 1);
+
+    System.out.println("after  sort:");
+    Utils.print(a);
   }
 }

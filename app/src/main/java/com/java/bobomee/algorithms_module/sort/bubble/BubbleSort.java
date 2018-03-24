@@ -19,73 +19,61 @@ package com.java.bobomee.algorithms_module.sort.bubble;
 import com.java.bobomee.algorithms_module.Utils;
 
 /**
- * 冒泡排序时间复杂度O(n2)
+ * <pre/>
+ * 算法描述：
+ * 1. i从0开始，i与i+1比较，如果i&#62;i+1，那么就互换
+ * 2. i不断增加，直到i&#60;n-1(n是数组元素的个数，n-1是数组已经最后一个元素) ，
+ * 一趟下来，可以让数组元素中最大值排在数组的最后面
+ *
+ * <pre/>
+ * 流程分析:
+ * 1. 经过我们第一趟比较，最大的值排在末尾
+ * 2. 第二趟排序完了之后，倒数第二位也是第二大的数了，且不需要比较最后一位了（已经是最大）
+ *
+ * <pre/>
+ * 最好的时间复杂度为：O(n)
+ * 最坏时间复杂度为：O(<i>n</i><sup>{@code 2}</sup>)
+ * 平均时间复杂度为：O(<i>n</i><sup>{@code 2}</sup>)
  *
  * @author BoBoMEe
  * @since 2017/4/5
- *
- * 1. 比较两个数字
- * 2. 如果左边的数字大，则交换两个数字的位置
- * 3. 向右移动一个位置，比较下两个数字
- *
- * 无论何时，只要看到循环嵌套在另一个循环里，就可以怀疑这个算法的运行时间为O(N²)级，
  */
-public class BubbleSort {
-  /**
-   * 简版冒泡排序
-   *
-   * @param arr 要排序的整型数组
-   */
-  public static void bubbleSort(int[] arr) {
-    // 最多做n-1趟排序，第k趟排序后，最后k个元素是有序的
-    for (int i = 0; i < arr.length - 1; i++) {
-      // 每一趟排序需要比较n-i-1次
-      // 对当前无序区间arr[0......length-i-1]进行排序(j的范围是在逐步缩小的)
-      for (int j = 0; j < arr.length - i - 1; j++) {
-        // 将较大的元素移动到后面
-        if (arr[j] > arr[j + 1]) {
-          int temp = arr[j];
-          arr[j] = arr[j + 1];
-          arr[j + 1] = temp;
-        }
-      }
-    }
-  }
+public final class BubbleSort {
 
   /**
-   * 优化的冒泡排序
-   */
-  public static void bubbleSort_(int[] arr) {
-    boolean swap = false;
-    for (int i = 0; i < arr.length - 1; i++) { //最多进行 n-1 趟
+   * This method implements the Generic Bubble Sort
+   *
+   * @param array The array to be sorted
+   * Sorts the array in increasing order
+   **/
+
+  public static <T extends Comparable<T>> void bubbleSort(T array[]) {
+    int last = array.length;
+    boolean swap;
+    do {
       swap = false;
-      for (int j = arr.length - 1; j > i; j--) { //从下往上扫描
-        if (arr[j] < arr[j - 1]) {
-          Utils.swap(arr, j, j - 1);
+      for (int count = 0; count < last - 1; count++) {
+        T current = array[count];
+        T next = array[count + 1];
+        int comp = current.compareTo(next);
+        if (comp > 0) {
+          Utils.swap(array, count, count + 1);
           swap = true;
         }
       }
-      if (!swap) {
-        break; // 未发生交换，终止算法
-      }
-    }
+      last--;
+    } while (swap);
   }
 
   public static void main(String[] args) {
-    int i;
-    int[] a = { 20, 40, 30, 10, 60, 50 };
+    Integer[] a = { 20, 40, 30, 10, 60, 50 };
 
-    System.out.printf("before sort:");
-    for (i = 0; i < a.length; i++)
-      System.out.printf("%d ", a[i]);
-    System.out.printf("\n");
+    System.out.println("before sort:");
+    Utils.print(a);
 
-    bubbleSort_(a);
-    //bubbleSort(a);
+    bubbleSort(a);
 
-    System.out.printf("after  sort:");
-    for (i = 0; i < a.length; i++)
-      System.out.printf("%d ", a[i]);
-    System.out.printf("\n");
+    System.out.println("after  sort:");
+    Utils.print(a);
   }
 }

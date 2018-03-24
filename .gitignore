@@ -34,3 +34,5 @@ build/intermediates/
 build/android-profile/profile-2018-03-20-14-20-30-432.rawproto
 build/android-profile/profile-2018-03-20-14-22-03-669.rawproto
 algorithms-java.iml
+app.iml
+build

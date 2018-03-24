@@ -16,6 +16,8 @@
 
 package com.java.bobomee.algorithms_module.sort.select;
 
+import com.java.bobomee.algorithms_module.Utils;
+
 /**
  * @author BoBoMEe
  * @since 2017/4/12
@@ -42,22 +44,43 @@ package com.java.bobomee.algorithms_module.sort.select;
  * 比较次数是主要的，所以结论是选择排序和冒泡排序一样 都是O(N²)的效率。
  */
 public class SelectSort {
-  public static int[] selection(int[] a) {
-    int i, j, min, v;
-    int n = a.length;
-    for (i = 0; i < n; i++) {
-      //每次将未排序部分的首元素下标赋值给下标min
-      min = i;
-      //得到未排序部分的最小值的下标并赋值给min
-      for (j = i + 1; j < n; j++) {
-        if (a[j] < a[min]) {
+  /**
+   * This method implements the Generic Selection Sort
+   *
+   * @param arr The array to be sorted
+   * Sorts the array in increasing order
+   **/
+
+  public static <T extends Comparable<T>> void selectSort(T[] arr) {
+
+    int n = arr.length;
+
+    for (int i = 0; i < n - 1; i++) {
+
+      // Initial index of min
+      int min = i;
+
+      for (int j = i + 1; j < n; j++) {
+        if (arr[j].compareTo(arr[min]) < 0) {
           min = j;
         }
       }
-      v = a[i];
-      a[i] = a[min];
-      a[min] = v;
+
+      // Swapping if index of min is changed
+      if (min != i) {
+        Utils.swap(arr,i,min);
+      }
     }
-    return a;
+  }
+
+  public static void main(String[] args) {
+    Integer a[] = { 20, 50, 20, 40, 70, 10, 80, 30, 60 };
+    System.out.println("before sort:");
+    Utils.print(a);
+
+    selectSort(a);
+
+    System.out.println("after  sort:");
+    Utils.print(a);
   }
 }

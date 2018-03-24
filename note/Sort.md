@@ -54,5 +54,18 @@
 
 [堆排序(Heapsort)之Java实现](http://blog.csdn.net/kimylrong/article/details/17150475)
 
+[找工作知识储备(3)---从头说12种排序算法：原理、图解、动画视频演示、代码以及笔试面试题目中的应用](https://blog.csdn.net/han_xiaoyang/article/details/12163251)
+
+- 插入排序,二分插入排序()
+- 希尔排序
+- 选择排序
+- 冒泡排序,鸡尾酒排序/双向冒泡排序
+- 快速排序
+- 堆排序
+- 归并排序
+- 桶排序
+- 计数排序
+- 基数排序
+
 ## 堆排序
 

@@ -1,5 +1,12 @@
 package com.java.bobomee.algorithms_module.sort.bucket;
 
+import com.java.bobomee.algorithms_module.Utils;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Project ID：400YF17051<br/>
  * Resume:
@@ -10,44 +17,33 @@ package com.java.bobomee.algorithms_module.sort.bucket;
  */
 public class BucketSort {
 
-  /*
-   * 桶排序
-	 *
-	 * 参数说明：
-	 *     a -- 待排序数组
-	 *     max -- 数组a中最大值的范围
-	 */
-  public static void bucketSort(int[] a, int max) {
-    if (a == null || max < 1) return;
+  public static int[] bucketSort(int[] arr) {
+    int i, j;
+    int[] bucket = new int[arr.length+1];
+    Arrays.fill(bucket, 0);
 
-    // 创建一个容量为max的数组buckets，并且将buckets中的所有数据都初始化为0。
-    int[] buckets = new int[max];
+    for (i = 0; i < arr.length; i++) {
+      bucket[arr[i]]++;
+    }
 
-    // 1. 计数
-    for (int anA : a) buckets[anA]++;
-
-    // 2. 排序
-    for (int i = 0, j = 0; i < max; i++) {
-      while ((buckets[i]--) > 0) {
-        a[j++] = i;
+    int k=0;
+    for (i = 0; i < bucket.length; i++) {
+      for (j = 0; j<bucket[i]; j++) {
+        arr[k++] = i;
       }
     }
+    return arr;
   }
 
   public static void main(String[] args) {
-    int i;
     int a[] = { 8, 2, 3, 4, 3, 6, 6, 3, 9 };
 
-    System.out.printf("before sort:");
-    for (i = 0; i < a.length; i++)
-      System.out.printf("%d ", a[i]);
-    System.out.printf("\n");
+    System.out.println("before sort:");
+    Utils.print(a);
 
-    bucketSort(a, 10); // 桶排序
+    bucketSort(a); // 桶排序
 
-    System.out.printf("after  sort:");
-    for (i = 0; i < a.length; i++)
-      System.out.printf("%d ", a[i]);
-    System.out.printf("\n");
+    System.out.println("after  sort:");
+    Utils.print(a);
   }
 }

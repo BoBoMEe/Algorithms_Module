@@ -16,6 +16,8 @@
 
 package com.java.bobomee.algorithms_module.sort.merge;
 
+import com.java.bobomee.algorithms_module.Utils;
+
 /**
  * @author 汪波
  * @version 1.0
@@ -90,5 +92,16 @@ public class MergeSort {
     for (int i = 0; i < temp.length; i++) {
       arr[i + left] = temp[i];
     }
+  }
+
+  public static void main(String[] args) {
+    int a[] = { 20, 50, 20, 40, 70, 10, 80, 30, 60 };
+    System.out.println("before sort:");
+    Utils.print(a);
+
+    mergeSort(a, 0, a.length - 1);
+
+    System.out.println("after  sort:");
+    Utils.print(a);
   }
 }

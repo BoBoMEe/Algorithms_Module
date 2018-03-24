@@ -1,6 +1,6 @@
 
 查找与排序
-------
+---
 
 [查找](https://github.com/BoBoMEe/algorithms-java/blob/master/note/Find.md)
 
@@ -9,6 +9,7 @@
 
 
 ## 算法题：
+---
 
 1. 有如下规则：
 

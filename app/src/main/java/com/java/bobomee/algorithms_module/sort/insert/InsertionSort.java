@@ -16,6 +16,8 @@
 
 package com.java.bobomee.algorithms_module.sort.insert;
 
+import com.java.bobomee.algorithms_module.Utils;
+
 /**
  * Resume: 插入排序
  * 时间复杂度仍然为 O(N²)
@@ -35,34 +37,37 @@ package com.java.bobomee.algorithms_module.sort.insert;
 public class InsertionSort {
 
   /**
-   * 对输入的整型数组进行插入排序
+   * This method implements the Generic Insertion Sort
    *
-   * @param arr
-   *            待排序的整型数组
-   */
-  public static void insertSort(int[] arr) {
-    // 认为第一个元素已经有序，从第二个元素开始取值插入已经有序的部分
-    for (int i = 1; i < arr.length; i++) {
-      // 待插入的元素
-      int key = arr[i];
-      // 待插入的位置下标
-      int index = i;
-      // 从后向前遍历数组已经有序的部分，寻找合适的插入位置
-      for (int j = i - 1; j >= 0; j--) {
-        // 如果待插入的元素较小，则将较大的元素依次向后移动，空出合适的插入位置
-        if (arr[j] > key) {
-          // 因为arr[j+1]=arr[i]=key，该元素已经临时存储在了key中，所以不会出现数据丢失
-          arr[j + 1] = arr[j];
-          // 记录下该位置的下标
-          index = j;
-        } else {
-          // 找到了合适的插入位置，则退出这个循环，开始取下一个元素，直到取完所有元素
-          break;
-        }
+   * @param array The array to be sorted
+   * Sorts the array in increasing order
+   **/
+
+  public static <T extends Comparable<T>> void insertSort(T array[]) {
+    T key;
+    int last = array.length;
+    for (int j = 1; j < last; j++) {
+
+      // Picking up the key(Card)
+      key = array[j];
+      int i = j - 1;
+      while (i >= 0 && key.compareTo(array[i]) < 0) {
+        array[i + 1] = array[i];
+        i--;
       }
-      // 将该元素插入到合适的位置
-      arr[index] = key;
+      // Placing the key (Card) at its correct position in the sorted subarray
+      array[i + 1] = key;
     }
   }
 
+  public static void main(String[] args) {
+    Integer a[] = { 20, 50, 20, 40, 70, 10, 80, 30, 60 };
+    System.out.println("before sort:");
+    Utils.print(a);
+
+    insertSort(a); // 桶排序
+
+    System.out.println("after  sort:");
+    Utils.print(a);
+  }
 }
